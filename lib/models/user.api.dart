@@ -1,27 +1,23 @@
+import 'package:hive_flutter/hive_flutter.dart';
 import 'dart:convert';
-
-import 'package:hive_flutter/adapters.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_application_1/models/user.dart';
 
 import 'package:flutter_application_1/constante.dart';
 
-const baseUrl = "";//hna dir lien 
-
 Future<dynamic> userAuth(String email, String password) async {
   Map body = {
-    // "username": "",
     "email": email,
     "password": password
   };
-  var url = Uri.parse("$baseUrl");//hna dir lien kaml 
-  var res = await http.post(url, body: body);
+  var uri = Uri.https('devjam.onrender.com', '/api/token/');
+  var res = await http.post(uri, body: body);
 
   print(res.body);
   print(res.statusCode);
   if (res.statusCode == 200) {
     Map json = jsonDecode(res.body);
-    String token = json['key'];
+    String token = json['access'];
     var box = await Hive.openBox(tokenBox);
     box.put("token", token);
     User? user = await getUser(token);
@@ -42,14 +38,13 @@ Future<dynamic> userAuth(String email, String password) async {
 }
 
 Future<User?> getUser(String token) async {
-  var url = Uri.parse("$baseUrl/user/auth/user/");
-  var res = await http.get(url, headers: {
-    'Authorization': 'Token ${token}',
+  var uri = Uri.https('devjam.onrender.com', '/api/user/getuser/');
+  var res = await http.get(uri, headers: {
+    'Authorization': 'Bearer $token',
   });
 
   if (res.statusCode == 200) {
     var json = jsonDecode(res.body);
-
     User user = User.fromJson(json);
     user.token = token;
     return user;
@@ -57,9 +52,3 @@ Future<User?> getUser(String token) async {
     return null;
   }
 }
-
-
-
-
-// example1gmail.com
-// 1GpTuZ6E
