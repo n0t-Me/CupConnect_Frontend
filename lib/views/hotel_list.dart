@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/hotel.dart';
 import 'package:flutter_application_1/views/Widgets/hotel_card.dart';
+import 'package:flutter_application_1/views/hotel_detail.dart';
 
 class HotelList extends StatelessWidget {
   final int stadId;
@@ -32,7 +33,12 @@ class HotelList extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              // Handle hotel tap
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HotelDetails(hotel: hotels[index]),
+                            ),
+                        );
             },
             child: HotelCard(
               title: hotels[index].name,
