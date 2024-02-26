@@ -31,7 +31,7 @@ jobs:
       # Consider passing '--fatal-infos' for slightly stricter analysis.
       - uses: subosito/flutter-action@v2.12.0
         with:
-          flutter-version: '3.3.0'
+          channel: 'stable'
       - name: Build apk
         run: |
           flutter pub get
