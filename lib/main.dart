@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'CupConnect',
+      locale: const Locale('en', 'US'),
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: Colors.white,

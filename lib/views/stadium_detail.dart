@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/models/hotel.api.dart';
+import 'package:flutter_application_1/models/hotel.dart';
 import 'package:flutter_application_1/models/studium.dart';
+import 'package:flutter_application_1/views/hotel_list.dart';
 import 'package:url_launcher/url_launcher.dart';
 Future<void> launchURL(String url) async {
   final Uri uri = Uri.parse(url);
@@ -149,7 +152,13 @@ class StudiumDetails extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         width: MediaQuery.of(context).size.width,
         child: ElevatedButton(
-          onPressed: () => {},
+          onPressed: () async {
+            List<Hotel> hotels = await HotelApi.getHotels(studium.id);
+            Navigator.push(
+             context,
+            MaterialPageRoute(builder: (context) => HotelList(stadId: studium.id, hotels: hotels)),
+            );
+            },
           style: ElevatedButton.styleFrom(
                  backgroundColor: Color.fromRGBO(120, 178, 163, 1),
             ),
@@ -176,7 +185,15 @@ class StudiumDetails extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Studiums'),
+        title: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.sports_soccer),
+              SizedBox(width: 10),
+              Text('Studiums'),
+            ],
+          ),
+          shadowColor: Colors.black,
       ),
       body: Column(
         children: <Widget>[topContent, bottomContent],
@@ -184,38 +201,3 @@ class StudiumDetails extends StatelessWidget {
     );
   }
 }
-/*appBar: AppBar(
-        title: Text(studium.name),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.network(
-              studium.picture.main,
-              width: double.infinity,
-              height: 200,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(height: 16, width: 15,),
-            const Text(
-              'Description:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              studium.desc,
-              style: TextStyle(fontSize: 16, color: Colors.black),
-            ),
-            Text('Name: ${studium.name}'),
-           const Text(
-              'Location:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.black),
-            ),
-            Text(
-              '${studium.country}, ${studium.city}',
-              style: TextStyle(fontSize: 16, color: Colors.black),
-            ),
-            // Add more details as needed
-          ],
-        ),
-      ),*/
