@@ -158,6 +158,8 @@ class _SignInPageState extends State<SignInPage> {
             onTap: () async {
               var authRes =
                   await userAuth(emailController.text, passwordController.text);
+                      print('Authentication result: $authRes'); // Add this line
+
               if (authRes.runtimeType == String) {
                 showDialog(
                   context: context,
@@ -173,6 +175,7 @@ class _SignInPageState extends State<SignInPage> {
                   },
                 );
               } else if (authRes.runtimeType == User) {
+                      print('User authenticated successfully'); // Add this line
                 User user = authRes;
                 context.read<UserCubit>().setUser(user);
                 Navigator.of(context).pushReplacement( // Use pushReplacement to replace current route with HomePage

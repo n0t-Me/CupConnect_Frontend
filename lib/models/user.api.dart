@@ -20,7 +20,7 @@ Future<dynamic> userAuth(String email, String password) async {
     String token = json['access'];
     var box = await Hive.openBox(tokenBox);
     box.put("token", token);
-    User? user = await getUser(token);
+    User? user = await getUser(token, email); // Pass the email parameter here
     return user;
   } else {
     Map json = jsonDecode(res.body);
@@ -37,8 +37,8 @@ Future<dynamic> userAuth(String email, String password) async {
   }
 }
 
-Future<User?> getUser(String token) async {
-  var uri = Uri.https('devjam.onrender.com', '/api/user/getuser/');
+Future<User?> getUser(String token, String email) async {
+  var uri = Uri.https('devjam.onrender.com', '/api/user/getuser/$email');
   var res = await http.get(uri, headers: {
     'Authorization': 'Bearer $token',
   });
