@@ -4,8 +4,7 @@ import 'dart:convert';
 
 class Studiumapi {
   static Future<List<Studium>> getStudium() async {
-    var uri = Uri.https('devjam.onrender.com', 'api/stadium/',
-        {"limit": "18", "start": "0", "tag": "list.stadium"});
+    var uri = Uri.https('devjam.onrender.com', 'api/stadium/');
 
     final response = await http.get(uri);
 
@@ -19,7 +18,9 @@ if (response.statusCode == 200) {
       }
 
       return studiums;}
-      return [];
-
+else {
+     print('Failed to load data. Status Code: ${response.statusCode}');
+      throw Exception('Failed to load data');
+    }
   }
 }

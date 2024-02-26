@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> getStudiums() async {
     _studiums = await Studiumapi.getStudium();
+    
     setState(() {
       _isLoading = false;
     });
@@ -47,6 +48,7 @@ class _HomePageState extends State<HomePage> {
         :ListView.builder(
                 itemCount: _studiums.length,
                 itemBuilder: (context, index) {
+                  print('Thumbnail URL: ${_studiums[index].picture.main}');
                   return GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -59,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                   child: StadiumCard(
                       title: _studiums[index].name, //to fix later : _studiums[index].name
                       location: _studiums[index].country + ", " + _studiums[index].city,//to fix later _studiums[index].country
-                      thumbnailUrl: _studiums[index].picture.main,//to fix later _studiums[index].picture.toString()
+                      thumbnailUrl: _studiums[index].picture.getUrl(),//to fix later _studiums[index].picture.toString()
                       ),
                       );
                 },

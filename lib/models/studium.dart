@@ -30,13 +30,31 @@ factory Studium.fromJson(dynamic json) {
     country: json['country'] as String,
     desc: json['desc'] as String,
     cost: json['cost'] as int,
-    picture: Picture(
-      main: json['picture']['main'] as String,
-      s1: json['picture']['s1'] as String,
-      s2: json['picture']['s2'] as String,
-      s3: json['picture']['s3'] as String,
-      s4: json['picture']['s4'] as String,
-    ),
+    picture: json['picture'] != null
+      ? Picture(
+          main: json['picture']['main'] != null
+            ? json['picture']['main'] as String
+            : '',
+        s1: json['picture']['s1'] != null
+            ? json['picture']['s1'] as String
+            : '',
+        s2: json['picture']['main'] != null
+            ? json['picture']['main'] as String
+            : '',
+        s3: json['picture']['s1'] != null
+            ? json['picture']['s1'] as String
+            : '',
+        s4: json['picture']['s1'] != null
+            ? json['picture']['s1'] as String
+            : '',
+        )
+      : Picture(
+          main: '',
+          s1: '',
+          s2: '',
+          s3: '',
+          s4: '',
+        ),
     map: json['map'] as String,
   );
 }
@@ -61,4 +79,17 @@ class Picture {
     required this.s3,
     required this.s4,
   });
+  String getUrl() {
+    if (main.isNotEmpty) {
+      return main;
+    } else if (s1.isNotEmpty) {
+      return s1;
+    } else if (s2.isNotEmpty) {
+      return s2;
+    } else if (s3.isNotEmpty) {
+      return s3;
+    } else {
+      return s4;
+    }
+  }
 }
