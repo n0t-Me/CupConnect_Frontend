@@ -22,7 +22,7 @@ class CustomTextButton extends StatelessWidget {
       child: TextButton(
         onPressed: onTap,
         style: TextButton.styleFrom(
-          backgroundColor: Color(0xffeeeeee),
+          backgroundColor: Color.fromRGBO(120, 178, 163, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),
           ),

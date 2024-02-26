@@ -10,9 +10,9 @@ Color kGreyColor = Color(0xff98999F);
 Color kBlueColor = Color(0xff5284E3);
 Color kBackgroundButtonColor = Color(0xffFCFCFD);
 Color kStrokeButtonColor = Color(0xffE5E5E5);
-Color bgColor = Color.fromARGB(255, 171, 244, 114);
+Color bgColor = Color.fromARGB(255, 225, 237, 225);
 
-// TEXT STYLES
+//Color.fromARGB(255, 136, 152, 136) TEXT STYLES
 TextStyle blackTextStyle = GoogleFonts.mulish(
   color: kBlackColor,
 );

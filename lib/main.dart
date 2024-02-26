@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Views/home.dart';
+import 'package:flutter_application_1/views/Login.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path_provider/path_provider.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  // Set the path for storing Hive data
+  var appDocumentDirectory = await getApplicationDocumentsDirectory();
+  Hive.init(appDocumentDirectory.path);
+
   runApp(const MyApp());
 }
 

@@ -45,26 +45,92 @@ class _SignInPageState extends State<SignInPage> {
           horizontal: defaultMargin,
         ),
         children: [
-          // Container(
-          //   margin: EdgeInsets.only(top: 50),
-          //   child: Image.asset(
-          //     'assets/img_login.png',
-          //   ),
-          // ),
-            
+           const SizedBox(
+                    height: 50,
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                       Image(
+                          height: 150,
+                          width: 150,
+                          image: AssetImage('lib/assets/logo2.png')),
+                       SizedBox(
+                        width: 5,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children:  [
+                          Text(
+                            "CupConnect",
+                            style: TextStyle(
+                                fontSize: 24,
+                                fontFamily: 'Rubik Medium',
+                                color: Color(0xff203142)),
+                          ),
+                        
+                        ],
+                      )
+                    ],
+                  ),
+          const SizedBox(
+                    height: 40,
+                  ),
+                  const Center(
+                    child: Text(
+                      "Log In",
+                      style: TextStyle(
+                          fontSize: 40,
+                          fontFamily: 'Rubik Medium',
+                          color: Colors.black),
+                    ),
+                  ),  
           
           const SizedBox(
-            height: 155,
+            height: 100,
           ),
-          CustomField(
+          
+                    TextFormField(
             controller: emailController,
-            iconUrl: 'assets/icon_email.png',
-            hint: 'Email',
+            decoration: InputDecoration(
+              hintText: 'Email',
+              fillColor: Color(0xfffbf9fa),
+              filled: true,
+              prefixIcon: Icon(
+                Icons.email,
+                color: Color(0xff323f4b),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xffe4e7eb)),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xffe4e7eb)),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
           ),
-          CustomField(
+          const SizedBox(height: 20), // Adjust as needed
+          TextFormField(
             controller: passwordController,
-            iconUrl: 'assets/icon_password.png',
-            hint: 'Password',
+            decoration: InputDecoration(
+              hintText: 'Password',
+              fillColor: Color(0xfffbf9fa),
+              filled: true,
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Color(0xff323f4b),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xffe4e7eb)),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xffe4e7eb)),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
           ),
 
           Align(
@@ -108,11 +174,10 @@ class _SignInPageState extends State<SignInPage> {
                 );
               } else if (authRes.runtimeType == User) {
                 User user = authRes;
-                context.read<UserCubit>().emit(user);
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) {
-                    return HomePage();
-                  },
+                context.read<UserCubit>().setUser(user);
+                Navigator.of(context).pushReplacement( // Use pushReplacement to replace current route with HomePage
+        MaterialPageRoute(
+          builder:(context) => HomePage(),
                 ));
               }
             },
