@@ -157,7 +157,7 @@ class _SignInPageState extends State<SignInPage> {
           CustomTextButton(
             onTap: () async {
               var authRes =
-                  await userAuth(emailController.text, passwordController.text);
+                  await userAuth(emailController.text.trim(), passwordController.text);
                       print('Authentication result: $authRes'); // Add this line
 
               if (authRes.runtimeType == String) {
