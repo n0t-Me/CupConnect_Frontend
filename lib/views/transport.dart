@@ -48,22 +48,17 @@ class TransportPage extends StatelessWidget {
                   ),
                   _buildTransportItem(
                     context,
-                    'Taxi',
+                    'Small Taxi',
                     'https://i0.wp.com/leseco.ma/wp-content/uploads/2020/02/taxis-rabat-1.jpg?fit=800%2C600&ssl=1',
                   ),
                   _buildTransportItem(
                     context,
-                    'Trame',
+                    'Tramway',
                     'https://i.pinimg.com/564x/ab/9e/32/ab9e32134c077422f8bf244c3d5bd83b.jpg',
                   ),
                   _buildTransportItem(
                     context,
-                    'BusWay',
-                    'https://i.pinimg.com/564x/ab/9e/32/ab9e32134c077422f8bf244c3d5bd83b.jpg',
-                  ),
-                  _buildTransportItem(
-                    context,
-                    'Taxi 2',
+                    'Big Taxi',
                     'https://www.bladi.net/img/logo/grands-taxis-nombre-passagers.jpg',
                   ),
                 ],
