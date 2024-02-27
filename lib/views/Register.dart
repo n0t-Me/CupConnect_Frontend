@@ -165,6 +165,7 @@ const SizedBox(height: 20),
       const SizedBox(height: 10),
           TextFormField(
             controller: passwordController,
+            obscureText: true, 
             decoration: InputDecoration(
               hintText: 'Password',
               fillColor: Color.fromARGB(255, 220, 228, 220),

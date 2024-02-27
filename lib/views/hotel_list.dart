@@ -13,16 +13,18 @@ class HotelList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.hotel),
-              SizedBox(width: 10),
-              Text('Nearest Hotels'),
+        title: const Padding(
+            padding:  EdgeInsets.only(left: 60.0),           
+            child: Row( children: [
+              Image(
+                    height: 70,
+                    width: 70,
+                    image: AssetImage('lib/assets/logo2.png')),
+              SizedBox(width: 5),
+              Text('Hotels'),
             ],
           ),
-          shadowColor: Colors.black,
-      ),
+      )),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,

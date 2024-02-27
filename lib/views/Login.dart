@@ -116,6 +116,7 @@ class _SignInPageState extends State<SignInPage> {
           const SizedBox(height: 20), // Adjust as needed
           TextFormField(
             controller: passwordController,
+            obscureText: true, 
             decoration: InputDecoration(
               hintText: 'Password',
               fillColor: Color.fromARGB(255, 220, 228, 220),

@@ -5,13 +5,18 @@ class TransportPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
+        title: const Padding(
+            padding:  EdgeInsets.only(left: 40.0),           
+            child: Row( children: [
+              Image(
+                    height: 70,
+                    width: 70,
+                    image: AssetImage('lib/assets/logo2.png')),
+              SizedBox(width: 5),
+              Text('Transport'),
+            ],
+          ),
+      )),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(

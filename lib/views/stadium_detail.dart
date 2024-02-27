@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/models/city.api.dart';
+import 'package:flutter_application_1/models/city.dart';
 import 'package:flutter_application_1/models/hotel.api.dart';
 import 'package:flutter_application_1/models/hotel.dart';
 import 'package:flutter_application_1/models/studium.dart';
+import 'package:flutter_application_1/views/discovercity.dart';
 import 'package:flutter_application_1/views/hotel_list.dart';
 import 'package:url_launcher/url_launcher.dart';
 Future<void> launchURL(String url) async {
@@ -82,6 +85,7 @@ class StudiumDetails extends StatelessWidget {
         const Icon(
           Icons.sports_soccer,
           color: Colors.white,
+          shadows: [Shadow(color: Colors.black, blurRadius: 10)],
           size: 40.0,
         ),
         SizedBox(
@@ -91,7 +95,7 @@ class StudiumDetails extends StatelessWidget {
         const SizedBox(height: 10.0),
         Text(
           studium.name,
-          style: TextStyle(color: Colors.white, fontSize: 30.0,fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white, fontSize: 30.0,fontWeight: FontWeight.bold,shadows: [Shadow(color: Colors.black, blurRadius: 10)],),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -134,7 +138,7 @@ class StudiumDetails extends StatelessWidget {
     SizedBox(height: 15), // Add some space between location and description
     Text(
       studium.desc,
-      style: TextStyle(fontSize: 18.0, color: Colors.black),
+      style: TextStyle(fontSize: 16.0, color: Colors.black),
     ),
     SizedBox(height: 15),
     GestureDetector(
@@ -146,25 +150,47 @@ class StudiumDetails extends StatelessWidget {
           style: TextStyle(fontSize: 15.0, color: Colors.blue, fontWeight: FontWeight.bold),
   ),
     ),
+        SizedBox(height: 20), // Add space under the map
   ],
 );
-    final readButton = Container(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        width: MediaQuery.of(context).size.width,
-        child: ElevatedButton(
-          onPressed: () async {
-            List<Hotel> hotels = await HotelApi.getHotels(studium.id);
-            Navigator.push(
-             context,
+    final buttonsRow = Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Adjust as needed
+  children: [
+    Container(
+      width: MediaQuery.of(context).size.width * 0.4, // Adjust the width as needed
+      child: ElevatedButton(
+        onPressed: () async {
+          List<Hotel> hotels = await HotelApi.getHotels(studium.id);
+          Navigator.push(
+            context,
             MaterialPageRoute(builder: (context) => HotelList(stadId: studium.id, hotels: hotels)),
-            );
-            },
-          style: ElevatedButton.styleFrom(
-                 backgroundColor: Color.fromRGBO(120, 178, 163, 1),
-            ),
-          child:
-              const Text("See Nearest Hotels", style: TextStyle(color: Colors.white)),
-        ));
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Color.fromRGBO(120, 178, 163, 1),
+        ),
+        child: const Text("Nearest Hotels", style: TextStyle(color: Colors.white)),
+      ),
+    ),
+    Container(
+      width: MediaQuery.of(context).size.width * 0.4, // Adjust the width as needed
+      child: ElevatedButton(
+        onPressed: () async {
+          City city = await CityApi.getCityByStadId(studium.id);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DiscoverCity(stadId: studium.id, city: city)),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Color.fromRGBO(120, 178, 163, 1),
+        ),
+        child: const Text("Discover city", style: TextStyle(color: Colors.white)),
+      ),
+    ),
+  ],
+);
+
     final bottomContent = Expanded(
   child:SingleChildScrollView(
   child:Container(
@@ -174,7 +200,7 @@ class StudiumDetails extends StatelessWidget {
       padding: const EdgeInsets.all(40.0),
       child: Center(
         child: Column(
-          children: <Widget>[bottomContentText, readButton],
+          children: <Widget>[bottomContentText, buttonsRow],
         ),
       ),
     ),
@@ -185,16 +211,18 @@ class StudiumDetails extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.sports_soccer),
-              SizedBox(width: 10),
+        title: const Padding(
+            padding:  EdgeInsets.only(left: 40.0),           
+            child: Row( children: [
+              Image(
+                    height: 70,
+                    width: 70,
+                    image: AssetImage('lib/assets/logo2.png')),
+              SizedBox(width: 5),
               Text('Studiums'),
             ],
           ),
-          shadowColor: Colors.black,
-      ),
+      )),
       body: Column(
         children: <Widget>[topContent, bottomContent],
       ),

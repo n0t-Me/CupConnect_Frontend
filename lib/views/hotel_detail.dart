@@ -25,6 +25,7 @@ class HotelDetails extends StatelessWidget {
         const Icon(
           Icons.hotel,
           color: Colors.white,
+          shadows: [Shadow(color: Colors.black, blurRadius: 10)],
           size: 40.0,
         ),
         SizedBox(
@@ -37,7 +38,7 @@ class HotelDetails extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontSize: 30.0,
-            shadows: [Shadow(color: Colors.black, blurRadius: 5)], 
+            shadows: [Shadow(color: Colors.black, blurRadius: 10)], 
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -176,8 +177,17 @@ List<String> properties = propertiesString.split(',').map((e) => e.trim().replac
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hotel Details'),
-      ),
+        title: const Padding(
+            padding:  EdgeInsets.only(left: 30.0),           
+            child: Row( children: [
+              Image(
+                    height: 70,
+                    width: 70,
+                    image: AssetImage('lib/assets/logo2.png')),
+        Text('Hotel Details'),
+             ],
+          ),
+      )),
       body: Column(
         children: <Widget>[topContent, bottomContent],
       ),

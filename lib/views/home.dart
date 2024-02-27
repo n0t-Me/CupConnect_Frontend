@@ -36,8 +36,10 @@ class _HomePageState extends State<HomePage> {
           title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.sports_soccer),
-              SizedBox(width: 10),
+              Image(
+                    height: 70,
+                    width: 70,
+                    image: AssetImage('lib/assets/logo2.png')),
               Text('Studiums'),
             ],
           ),
