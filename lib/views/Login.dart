@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/views/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/models/user.dart';
 import 'package:flutter_application_1/views/home.dart';
 
 import 'package:flutter_application_1/models/user.api.dart';
 import '../models/user_cubit.dart';
-import 'package:flutter_application_1/views/Widgets/fields.dart';
-import 'package:flutter_application_1/views/Widgets/image_button.dart';
 import 'package:flutter_application_1/views/Widgets/texxt_button.dart';
 import 'Register.dart';
 import 'ForgetPass.dart';

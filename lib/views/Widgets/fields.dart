@@ -5,7 +5,7 @@ import '../theme.dart';
 class CustomField extends StatelessWidget {
   final String iconUrl;
   final String hint;
-  TextEditingController? controller;
+  final TextEditingController? controller;
 
   CustomField({
     this.controller,

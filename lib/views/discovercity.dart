@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/city.dart';
+import 'package:flutter_application_1/models/dishes.api.dart';
+import 'package:flutter_application_1/models/dishes.dart';
 import 'package:flutter_application_1/models/hotel.api.dart';
 import 'package:flutter_application_1/models/hotel.dart';
+import 'package:flutter_application_1/views/dishes_list.dart';
 import 'package:flutter_application_1/views/hotel_list.dart';
 import 'package:flutter_application_1/views/theme.dart';
 import 'package:flutter_application_1/views/transport.dart';
@@ -115,7 +118,7 @@ class DiscoverCity extends StatelessWidget {
                       color: Color.fromRGBO(101, 150, 137, 1))
                       ),
                 ),
-                
+
                 ElevatedButton.icon(
                   onPressed: () async {
                     List<Hotel> hotels = await HotelApi.getHotels(stadId);
@@ -130,6 +133,24 @@ class DiscoverCity extends StatelessWidget {
                       color: Color.fromRGBO(101, 150, 137, 1))
                       ),
                 ),
+                ElevatedButton.icon(
+                       onPressed: () async {
+                      List<Dish> dishes = await DishApi.getDishesByCityName(city.name);
+                     Navigator.push(
+                       context,
+                     MaterialPageRoute(builder: (context) => DishesList(cityName: city.name, dishes: dishes)),
+                     );
+                      },
+                      icon: Icon(Icons.restaurant, color: Color.fromRGBO(101, 150, 137, 1)),
+                      label: Text(
+                        'Dishes',
+                        style: whiteTextStyle.copyWith(
+                          fontWeight: semiBold,
+                          color: Color.fromRGBO(101, 150, 137, 1),
+                        ),
+                      ),
+                    ),
+
               ],
             ),
           ],

@@ -5,7 +5,7 @@ import '../theme.dart';
 class CustomTextButton extends StatelessWidget {
   final String title;
   final EdgeInsets margin;
-  VoidCallback? onTap;
+  final VoidCallback? onTap;
   CustomTextButton({
     super.key,
     this.title = '',

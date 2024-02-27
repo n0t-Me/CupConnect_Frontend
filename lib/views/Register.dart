@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/user.dart';
 import 'package:flutter_application_1/views/Login.dart';
-import 'package:flutter_application_1/views/Widgets/fields.dart';
 import 'package:flutter_application_1/views/Widgets/texxt_button.dart';
 import 'package:flutter_application_1/views/theme.dart';
 import 'package:flutter/services.dart';
@@ -10,13 +9,13 @@ import 'package:flutter_application_1/models/user.api.dart';
 class SignUpPage extends StatelessWidget {
    SignUpPage({Key? key}) : super(key: key);
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController genderController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
-  TextEditingController countryController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController genderController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController countryController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
