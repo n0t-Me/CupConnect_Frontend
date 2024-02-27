@@ -77,14 +77,16 @@ class _SignInPageState extends State<SignInPage> {
           const SizedBox(
                     height: 40,
                   ),
-                  const Center(
-                    child: Text(
-                      "Log In",
-                      style: TextStyle(
-                          fontSize: 40,
-                          fontFamily: 'Rubik Medium',
-                          color: Colors.black),
-                    ),
+                  const Center(child:Column(
+      children: [
+        Text(
+          "Welcome Back",
+          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold,color: Colors.black),
+        ),
+        Text("Enter your credential to login",
+        style: TextStyle(color: Colors.black),)
+      ],
+    ),
                   ),  
           
           const SizedBox(
@@ -95,7 +97,7 @@ class _SignInPageState extends State<SignInPage> {
             controller: emailController,
             decoration: InputDecoration(
               hintText: 'Email',
-              fillColor: Color(0xfffbf9fa),
+              fillColor: Color.fromARGB(255, 220, 228, 220),
               filled: true,
               prefixIcon: Icon(
                 Icons.email,
@@ -116,7 +118,7 @@ class _SignInPageState extends State<SignInPage> {
             controller: passwordController,
             decoration: InputDecoration(
               hintText: 'Password',
-              fillColor: Color(0xfffbf9fa),
+              fillColor: Color.fromARGB(255, 220, 228, 220),
               filled: true,
               prefixIcon: Icon(
                 Icons.lock,
@@ -144,7 +146,7 @@ class _SignInPageState extends State<SignInPage> {
                   );
                 },
                 child: Text(
-                  "I Forget my Password !!",
+                  "I Forgot my Password !!",
                   style: whiteTextStyle.copyWith(
                     fontSize: 14,
                     fontWeight: semiBold,
@@ -196,6 +198,7 @@ class _SignInPageState extends State<SignInPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const Text("Dont have an account? ",style: TextStyle(color: Colors.black),),
                 TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -204,10 +207,11 @@ class _SignInPageState extends State<SignInPage> {
                     );
                   },
                   child: Text(
-                    "Don't have an Account signup ? ",
+                    "Signup ! ",
                     style: whiteTextStyle.copyWith(
-                      fontSize: 16,
+                      fontSize: 20,
                       fontWeight: semiBold,
+                      color: Color.fromRGBO(101, 150, 137, 1),
                     ),
                   ),
                 ),

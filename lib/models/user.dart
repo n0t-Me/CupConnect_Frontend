@@ -40,4 +40,17 @@ class User {
     final jsonData = json.decode(jsonString);
     return List<User>.from(jsonData.map((user) => User.fromJson(user)));
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id != null ? id.toString() : null,
+      'first_name': firstName,
+      'last_name': lastName,
+      'email': email,
+      'password': password,
+      'gender': gender,
+      'phone': phone,
+      'country': country,
+    };
+  }
 }

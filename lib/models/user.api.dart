@@ -52,3 +52,20 @@ Future<User?> getUser(String token, String email) async {
     return null;
   }
 }
+
+Future<User?> registerUser(User user) async {
+  // Serialize the user object into JSON format
+  Map<String, dynamic> body = user.toJson();
+
+  var uri = Uri.https('devjam.onrender.com', '/api/user/create/');
+  var res = await http.post(uri, body: body);
+
+  if (res.statusCode == 201) {
+    print("User registered successfully");
+    return null;
+  } else {
+    print("Registration failed with status code: ${res.statusCode}");
+    print("Response body: ${res.body}");
+    return null;
+  }
+}

@@ -5,14 +5,14 @@ double defaultMargin = 30.0;
 
 // COLORS
 Color kBlackColor = Color(0xff292A2D);
-Color kWhiteColor = Color(0xffFFFFFF);
+Color kWhiteColor = Colors.black;
 Color kGreyColor = Color(0xff98999F);
 Color kBlueColor = Color(0xff5284E3);
 Color kBackgroundButtonColor = Color(0xffFCFCFD);
 Color kStrokeButtonColor = Color(0xffE5E5E5);
-Color bgColor = Color.fromARGB(255, 225, 237, 225);
+Color bgColor = Colors.white;
 
-//Color.fromARGB(255, 136, 152, 136) TEXT STYLES
+//Color.fromARGB(255, 136, 152, 136) Color(0xffFFFFFF) TEXT STYLES
 TextStyle blackTextStyle = GoogleFonts.mulish(
   color: kBlackColor,
 );
