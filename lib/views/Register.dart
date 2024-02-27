@@ -206,7 +206,6 @@ const SizedBox(height: 20),
             onTap: () {
     // Create a User object with the provided input values
     User user = User(
-      id: 0, // ID can be set to any value since it's not used in registration
       firstName: firstNameController.text,
       lastName: lastNameController.text,
       email: emailController.text,
@@ -214,7 +213,6 @@ const SizedBox(height: 20),
       gender: genderController.text,
       phone: phoneController.text,
       country: countryController.text,
-      token: '', // Token can be empty for registration
     );
 
     // Call the register function with the User object
