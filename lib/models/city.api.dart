@@ -9,7 +9,7 @@ class CityApi {
     final response = await http.get(uri);
 
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = jsonDecode(response.body);
+      Map<String, dynamic> data = jsonDecode(Utf8Decoder().convert(response.bodyBytes));
       City city = City.fromJson(data);
       return city;
     } else {

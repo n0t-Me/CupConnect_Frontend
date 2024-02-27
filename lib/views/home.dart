@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                     height: 70,
                     width: 70,
                     image: AssetImage('lib/assets/logo2.png')),
-              Text('Studiums'),
+              Text('Stadiums'),
             ],
           ),
           shadowColor: Colors.black,

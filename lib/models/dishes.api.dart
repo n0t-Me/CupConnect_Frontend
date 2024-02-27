@@ -9,7 +9,7 @@ class DishApi {
     final response = await http.get(uri);
 
     if (response.statusCode == 200) {
-      List<dynamic> data = jsonDecode(response.body);
+      List<dynamic> data = jsonDecode(Utf8Decoder().convert(response.bodyBytes));
       List<Dish> dishes = [];
 
       for (var item in data) {

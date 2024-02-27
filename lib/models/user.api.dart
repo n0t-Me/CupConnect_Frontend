@@ -7,7 +7,7 @@ import 'package:flutter_application_1/constante.dart';
 
 Future<dynamic> userAuth(String email, String password) async {
   Map body = {
-    "email": email,
+    "email": email.trim(),
     "password": password
   };
   var uri = Uri.https('devjam.onrender.com', '/api/token/');
@@ -16,7 +16,7 @@ Future<dynamic> userAuth(String email, String password) async {
   print(res.body);
   print(res.statusCode);
   if (res.statusCode == 200) {
-    Map json = jsonDecode(res.body);
+    Map json = jsonDecode(Utf8Decoder().convert(res.bodyBytes));
     String token = json['access'];
     var box = await Hive.openBox(tokenBox);
     box.put("token", token);
