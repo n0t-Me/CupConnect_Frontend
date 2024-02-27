@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constante.dart';
 import 'package:flutter_application_1/models/user_cubit.dart';
 import 'package:flutter_application_1/views/Login.dart';
+import 'package:flutter_application_1/views/home.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
@@ -10,12 +12,14 @@ void main() async {
   // Set the path for storing Hive data
   var appDocumentDirectory = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
-
-  runApp(const MyApp());
+  var box = await Hive.openBox(tokenBox);
+  String token = box.get("token");
+  runApp(MyApp(token));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String token;
+  const MyApp(this.token, {super.key});
 
   // This widget is the root of your application.
   @override
@@ -36,7 +40,7 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(color: Colors.white),
        ),
       ),
-      home: SignInPage(),
+      home: token.isEmpty ? SignInPage() : HomePage(),
     ),
     );
   }
