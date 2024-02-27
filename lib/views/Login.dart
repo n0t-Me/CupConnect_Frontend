@@ -7,9 +7,9 @@ import 'package:flutter_application_1/views/home.dart';
 
 import 'package:flutter_application_1/models/user.api.dart';
 import '../models/user_cubit.dart';
-import 'package:flutter_application_1/Views/Widgets/fields.dart';
-import 'package:flutter_application_1/Views/Widgets/image_button.dart';
-import 'package:flutter_application_1/Views/Widgets/texxt_button.dart';
+import 'package:flutter_application_1/views/Widgets/fields.dart';
+import 'package:flutter_application_1/views/Widgets/image_button.dart';
+import 'package:flutter_application_1/views/Widgets/texxt_button.dart';
 import 'Register.dart';
 import 'ForgetPass.dart';
 

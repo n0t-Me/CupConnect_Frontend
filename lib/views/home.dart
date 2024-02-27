@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Views/Widgets/stadium_card.dart';
+import 'package:flutter_application_1/views/Widgets/stadium_card.dart';
 import 'package:flutter_application_1/models/studium.api.dart';
 import 'package:flutter_application_1/models/studium.dart';
 import 'package:flutter_application_1/views/stadium_detail.dart';
