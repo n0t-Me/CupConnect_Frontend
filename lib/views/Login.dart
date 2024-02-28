@@ -133,26 +133,6 @@ class _SignInPageState extends State<SignInPage> {
             ),
           ),
 
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ForgotPassPage()),
-                  );
-                },
-                child: Text(
-                  "I Forgot my Password !!",
-                  style: whiteTextStyle.copyWith(
-                    fontSize: 14,
-                    fontWeight: semiBold,
-                  ),
-                ),
-              ),
-            ),
-          ),
           // Login
           CustomTextButton(
             onTap: () async {

@@ -13,7 +13,7 @@ void main() async {
   var appDocumentDirectory = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
   var box = await Hive.openBox(tokenBox);
-  String token = box.get("token");
+  String token = box.get("token", defaultValue: "");
   runApp(MyApp(token));
 }
 
