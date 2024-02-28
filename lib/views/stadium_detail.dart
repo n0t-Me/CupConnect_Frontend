@@ -219,7 +219,7 @@ class StudiumDetails extends StatelessWidget {
                     width: 70,
                     image: AssetImage('lib/assets/logo2.png')),
               SizedBox(width: 5),
-              Text('Studiums'),
+              Text('Stadiums'),
             ],
           ),
       )),

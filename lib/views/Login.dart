@@ -187,7 +187,6 @@ class _SignInPageState extends State<SignInPage> {
                   child: Text(
                     "Signup ! ",
                     style: whiteTextStyle.copyWith(
-                      fontSize: 20,
                       fontWeight: semiBold,
                       color: Color.fromRGBO(101, 150, 137, 1),
                     ),
